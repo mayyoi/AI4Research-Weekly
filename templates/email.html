@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>{{SUBJECT}}</title>
+<style>
+  /* 这一段只在支持 <style> 的客户端里生效，属于"锦上添花"，不影响主体排版 */
+  a { text-decoration: none; }
+  .card:hover { border-color: #c7d2fe !important; }
+  @media (max-width: 640px) {
+    .wrap { padding: 12px 8px !important; }
+    .shell { width: 100% !important; border-radius: 12px !important; }
+    .pad { padding-left: 18px !important; padding-right: 18px !important; }
+    .h1 { font-size: 21px !important; }
+    .item-title { font-size: 15px !important; }
+    .label-col { width: 46px !important; font-size: 11px !important; }
+    .stat-cell { display: block !important; width: 100% !important; padding: 6px 0 !important; }
+    .hide-mobile { display: none !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#eef1f6;">
+<!-- 收件箱里显示的预览文字 -->
+<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;color:#eef1f6;">{{PREHEADER}}</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eef1f6;">
+<tr>
+<td align="center" class="wrap" style="padding:26px 12px;">
+
+  <table role="presentation" class="shell" width="640" cellpadding="0" cellspacing="0" border="0"
+         style="width:640px;max-width:640px;background-color:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e3e8f0;">
+
+    <!-- ===================== 顶部标题区 ===================== -->
+    <tr>
+      <td style="background-color:#0f172a;background-image:linear-gradient(135deg,#0f172a 0%,#1e293b 55%,#312e81 100%);padding:30px 28px 26px 28px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="font-family:-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;">
+              <div style="font-size:11px;letter-spacing:2px;color:#93c5fd;font-weight:700;">AI × 科研效率</div>
+              <div class="h1" style="font-size:26px;line-height:1.35;color:#ffffff;font-weight:800;margin-top:8px;">
+                每周 AI 情报周报
+              </div>
+              <div style="margin-top:14px;">
+                <span style="display:inline-block;background-color:rgba(255,255,255,0.12);color:#e2e8f0;font-size:12px;padding:5px 11px;border-radius:999px;margin-right:8px;">第 {{ISSUE_NO}} 期</span>
+                <span style="display:inline-block;background-color:rgba(255,255,255,0.12);color:#e2e8f0;font-size:12px;padding:5px 11px;border-radius:999px;">{{DATE_RANGE}}</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-top:18px;">
+              <div style="background-color:rgba(255,255,255,0.08);border-left:3px solid #60a5fa;border-radius:8px;padding:12px 14px;font-family:-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:13px;line-height:1.7;color:#dbeafe;">
+                {{INTRO}}
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ===================== 数据条 ===================== -->
+    <tr>
+      <td style="background-color:#f8fafc;border-bottom:1px solid #e8edf5;padding:12px 28px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td class="stat-cell" style="font-family:-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:12px;color:#475569;padding-right:18px;">
+              <span style="color:#0f172a;font-weight:700;">{{RAW_COUNT}}</span> 条候选中筛出
+              <span style="color:#0f172a;font-weight:700;">{{ITEM_COUNT}}</span> 条
+            </td>
+            <td class="stat-cell" style="font-family:-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:12px;color:#475569;padding-right:18px;">
+              来源 <span style="color:#0f172a;font-weight:700;">{{SOURCE_COUNT}}</span> 个渠道
+            </td>
+            <td class="stat-cell" style="font-family:-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:12px;color:#475569;">
+              本期专题 <span style="color:#4338ca;font-weight:700;">{{ROTATING_TOPIC}}</span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ===================== 本周只值得动手试的一件事 ===================== -->
+    {{HIGHLIGHT_BLOCK}}
+
+    <!-- ===================== 各栏目 ===================== -->
+    {{SECTIONS_HTML}}
+
+    <!-- ===================== 术语小抄 ===================== -->
+    {{GLOSSARY_BLOCK}}
+
+    <!-- ===================== 页脚 ===================== -->
+    <tr>
+      <td class="pad" style="background-color:#f8fafc;border-top:1px solid #e8edf5;padding:20px 28px 24px 28px;">
+        <div style="font-family:-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;font-size:12px;line-height:1.8;color:#64748b;">
+          {{FOOTER_NOTE}}<br>
+          <span style="color:#94a3b8;">数据源：{{SOURCES_NOTE}}{{FAILURE_NOTE}}</span>
+        </div>
+      </td>
+    </tr>
+
+  </table>
+
+</td>
+</tr>
+</table>
+</body>
+</html>
