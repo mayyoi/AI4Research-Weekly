@@ -72,6 +72,7 @@ def run(dry_run: bool = False, no_ai: bool = False) -> int:
 
     clients = llm.build_llms(config)
     kept: list[dict] = []
+    used_fallback = False
     composition = {"intro": "", "highlight_id": None, "highlight_reason": "", "glossary": []}
 
     if no_ai or not candidates:
@@ -92,9 +93,10 @@ def run(dry_run: bool = False, no_ai: bool = False) -> int:
         if not kept:
             # AI 环节可能因为额度/网络问题整体失败。这时候不要让邮件变成空信，
             # 改成按规则排序，仍然给你一份可用的速览。
-            kept = curate.fallback_selection(candidates, min(10, config.MAX_ITEMS))
+            kept = curate.fallback_selection(candidates, min(8, config.MAX_ITEMS))
+            used_fallback = True
             composition = {
-                "intro": "本次 AI 摘要服务没有正常返回，先按来源与时效为你整理了一份速览。",
+                "intro": "本次 AI 摘要服务没有正常返回，下面是用免费翻译整理的原文速览（附原文链接）。",
                 "highlight_id": kept[0]["id"] if kept else None,
                 "highlight_reason": "本期按规则评分排在最前的一条，建议优先看看。",
                 "glossary": [],
@@ -166,7 +168,11 @@ def run(dry_run: bool = False, no_ai: bool = False) -> int:
     if dry_run:
         print("      演练模式：不写入历史。")
     else:
-        added = history.append(store, kept, today.isoformat())
+        if used_fallback:
+            added = 0
+            print("      本次是兜底速览，不写入历史（下次 AI 正常时这些内容还能被重新推送）")
+        else:
+            added = history.append(store, kept, today.isoformat())
         store["issue"] = issue_no
         store["last_run"] = today.isoformat()
         history.save(history_path, store)

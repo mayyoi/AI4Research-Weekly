@@ -43,15 +43,30 @@ BLOCKLIST = []
 # ---------------------------------------------------------
 # 3. AI 设置
 # ---------------------------------------------------------
-# 优先用哪家的模型。谁在前面就先试谁；第一个整体跑不通会自动换下一个。
-# 只有你在仓库里配了对应的 Key，这个平台才会被启用：
-#   OPENAI_API_KEY  -> OpenAI
-#   GEMINI_API_KEY  -> Google Gemini（免费额度，不绑卡）
-LLM_PREFERENCE = ["openai", "gemini"]
+# 优先用哪家的模型。谁在前面就先试谁；某某整体跑不通会自动换下一个。
+# 可用平台及所需凭据：
+#   github   -> 仓库自带的 GITHUB_TOKEN（GitHub Models，免费，不需要你配任何 Key）
+#   deepseek -> DEEPSEEK_API_KEY
+#   openai   -> OPENAI_API_KEY（可选 OPENAI_BASE_URL 走中转）
+#   gemini   -> GEMINI_API_KEY（免费额度）
+LLM_PREFERENCE = ["github", "deepseek", "openai", "gemini"]
+
+# GitHub Models 的模型名。会按顺序尝试，第一个不可用就换下一个。
+# 不需要申请 Key，用的是工作流里自动注入的 GITHUB_TOKEN。
+GITHUB_MODELS = [
+    "openai/gpt-4.1-mini",
+    "openai/gpt-4o-mini",
+    "openai/gpt-4o",
+    "meta/Llama-4-Scout-17B-16E-Instruct",
+]
+
+# DeepSeek 的模型名
+DEEPSEEK_MODELS = ["deepseek-chat"]
 
 # OpenAI 用哪个模型。会按顺序尝试，第一个不存在就换下一个。
 # 想指定固定模型，也可以在仓库里加一个叫 OPENAI_MODEL 的 Secret/Variable。
-OPENAI_MODELS = ["gpt-5", "gpt-4.1", "gpt-4o", "gpt-4o-mini"]
+# OpenAI 的模型名（想固定用某个，也可以在仓库里加一个叫 OPENAI_MODEL 的变量）
+OPENAI_MODELS = ["gpt-4.1-mini", "gpt-4o-mini", "gpt-4o", "gpt-4.1"]
 
 # Gemini 用哪个模型（免费额度）。
 GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash"]

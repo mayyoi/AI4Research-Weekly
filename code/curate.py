@@ -12,6 +12,8 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import urllib.parse
+import urllib.request
 from datetime import date
 
 import llm as llm_module
@@ -176,6 +178,10 @@ def _run_batches(client, cfg, items: list[dict], rotating_topic: str) -> dict[in
                 temperature=0.2,
                 max_retries=cfg.AI_MAX_RETRIES,
             )
+        except llm_module.AuthError as exc:
+            # Key 无效 / 没有权限：后面每一批都会以同样方式失败，直接放弃这个平台
+            print(f"  [AI] 凭据被拒绝，放弃 {client.label}：{str(exc)[:140]}")
+            break
         except Exception as exc:  # noqa: BLE001
             print(f"  [AI] 这一批失败，跳过：{type(exc).__name__}: {str(exc)[:120]}")
             continue
@@ -329,25 +335,53 @@ def fingerprint(items: list[dict]) -> str:
     return digest.hexdigest()[:12]
 
 
-def fallback_selection(items: list[dict], limit: int = 10) -> list[dict]:
+TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single"
+
+
+def translate_zh(text: str, timeout: int = 15) -> str:
     """
-    兜底方案：当 AI 完全不可用时（额度用完、接口报错等），
-    按规则分数挑出前几条，用原文摘要代替 AI 摘要。
-    这样即使 AI 挂了，你收到的邮件仍然是有用的，而不是一封空白信。
+    用免费的 Google 翻译接口把一段文字翻成中文（不需要任何 Key）。
+    失败时返回空字符串，调用方自己决定怎么兜底。
+    """
+    text = (text or "").strip()
+    if not text:
+        return ""
+    params = {"client": "gtx", "sl": "auto", "tl": "zh-CN", "dt": "t", "q": text[:1500]}
+    url = TRANSLATE_URL + "?" + urllib.parse.urlencode(params)
+    try:
+        request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            data = json.loads(response.read().decode("utf-8", errors="replace"))
+        return "".join(part[0] for part in data[0] if part and part[0]).strip()
+    except Exception:  # noqa: BLE001
+        return ""
+
+
+def fallback_selection(items: list[dict], limit: int = 8) -> list[dict]:
+    """
+    兜底方案：当所有 AI 平台都不可用时，按规则分数挑出前几条，
+    **用免费翻译把它变成中文**，再配上原文链接。
+    这样即使 AI 完全用不了，你收到的至少是一份能看懂的中文速览，
+    而不是一堆英文标题。
     """
     picked = []
     for rank, item in enumerate(sorted(items, key=heuristic_score, reverse=True)[:limit]):
+        raw_title = (item.get("title") or "").strip()
+        title_zh = translate_zh(raw_title)
+        summary_zh = translate_zh((item.get("summary") or "")[:500])
         merged = dict(item)
         merged["id"] = rank
         merged["score"] = 0
         merged["column"] = item.get("pool") or "工具雷达"
-        merged["what"] = (item.get("summary") or "（本条没有摘要，点开原文查看）")[:110]
-        merged["why"] = "本次 AI 摘要不可用，先按来源与时效排序供你速览。"
+        merged["title"] = f"{title_zh}（{raw_title[:70]}）" if title_zh else raw_title
+        merged["what"] = summary_zh[:180] if summary_zh else "（本条没有摘要，点开原文查看）"
+        merged["why"] = "本次 AI 摘要服务未启用，下面给的是原文内容的中文翻译，供你快速判断值不值得细看。"
         merged["how"] = ""
         merged["difficulty"] = ""
         merged["cost"] = ""
-        merged["tags"] = []
+        merged["tags"] = ["待人工判断"]
         picked.append(merged)
+        print(f"  [兜底] 已翻译第 {rank + 1} 条")
     return picked
 
 
