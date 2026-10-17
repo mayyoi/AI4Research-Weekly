@@ -1,6 +1,85 @@
 {
   "version": 1,
-  "issue": 1,
+  "issue": 2,
   "last_run": "2026-10-17",
-  "items": []
+  "items": [
+    {
+      "title": "Documenting Trofinetide Treatment Phenotypes in Rett Syndrome with a Dual-LLM Consensus Pipeline",
+      "url": "http://arxiv.org/abs/2610.22062v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Bringing GPT-Rosalind to academic research labs",
+      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+      "column": "模型更新",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "MassNet: billion-scale AI-ready mass spectral corpus empowering scalable deep learning in proteomics",
+      "url": "https://www.nature.com/articles/s41592-026-03247-y",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "AmpliconSuite: an end-to-end workflow for analyzing focal amplifications in cancer genomes",
+      "url": "https://www.nature.com/articles/s41592-026-03264-x",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "[分享创造] 拾阅 Readly 更新｜批量操作上线，新增高品质在线听书， AI 翻译体验升级，本地优先 RSS 阅读器",
+      "url": "https://www.v2ex.com/t/1249572#reply0",
+      "column": "工具雷达",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Panoramic modelling of single-cell transcriptomes at scale with CellNet",
+      "url": "http://arxiv.org/abs/2610.21943v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Voice dictation with ChatGPT- I got unstuck by explaning the idea before I know what it is",
+      "url": "https://www.reddit.com/r/ChatGPTPro/comments/1x6vndj/voice_dictation_with_chatgpt_i_got_unstuck_by/",
+      "column": "技能配方",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Training Reasoning Models to Generate Diverse Scientific Ideas",
+      "url": "http://arxiv.org/abs/2610.22324v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "I had Claude build 13 internal tools from written specs. It passed every check, and exposed 126 gaps in my specs.",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1x7zfzs/i_had_claude_build_13_internal_tools_from_written/",
+      "column": "技能配方",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "[Linux] 一小时手搓 AI Agent 沙箱：从 namespace、cgroup 到 systemd-nspawn",
+      "url": "https://www.v2ex.com/t/1249559#reply0",
+      "column": "工具雷达",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "A$^3$PreCore: Robust Rigid Registration for Native FLAIR-Space Brain-Mask Transfer",
+      "url": "http://arxiv.org/abs/2610.20561v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Paid ChatGPT users: recurring technical failures since mid-September. We need a lasting fix and fair",
+      "url": "https://www.reddit.com/r/ChatGPTPro/comments/1x4m9lb/paid_chatgpt_users_recurring_technical_failures/",
+      "column": "技能配方",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "[分享创造] 标题：做了一个实验：把同一份「身份包」喂给 Claude 和 Grok，它们答成了同一个助手",
+      "url": "https://www.v2ex.com/t/1249585#reply0",
+      "column": "工具雷达",
+      "first_seen": "2026-10-17"
+    }
+  ]
 }
