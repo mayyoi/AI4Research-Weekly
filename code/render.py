@@ -272,3 +272,22 @@ def highlight_to_html(item, reason: str) -> str:
 
 def glossary_to_html(glossary: list[dict]) -> str:
     return _glossary_block(glossary)
+
+
+# ---- 板块标题改为整条彩色带（每个板块颜色不同，一眼可分）----
+def _section_block(name, icon, desc, theme, items):
+    cards = "".join(_item_card(item, theme) for item in items)
+    return (
+        '<tr><td class="pad" style="padding:26px 28px 0 28px;">'
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
+        'style="background-color:' + theme + ';border-radius:10px;">'
+        '<tr>'
+        '<td style="padding:11px 14px;font-family:' + FONT + ';font-size:15px;font-weight:800;color:#ffffff;">'
+        + icon + ' ' + _e(name) + '</td>'
+        '<td align="right" style="padding:11px 14px;font-family:' + FONT + ';font-size:11px;color:#ffffff;">'
+        + str(len(items)) + ' 条</td>'
+        '</tr></table>'
+        '<div style="font-family:' + FONT + ';font-size:12px;color:#94a3b8;margin-top:7px;">' + _e(desc) + '</div>'
+        '</td></tr>'
+        '<tr><td class="pad" style="padding:12px 28px 0 28px;">' + cards + '</td></tr>'
+    )
