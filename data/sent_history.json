@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "issue": 2,
+  "issue": 3,
   "last_run": "2026-10-17",
   "items": [
     {
@@ -79,6 +79,78 @@
       "title": "[分享创造] 标题：做了一个实验：把同一份「身份包」喂给 Claude 和 Grok，它们答成了同一个助手",
       "url": "https://www.v2ex.com/t/1249585#reply0",
       "column": "工具雷达",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Decoding systemic vascular health and hypertensive disorders in pregnancy through retinal imaging and Visionary AI.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42839051/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "FFA-SegGPT: A Two-Stage Cross-Modal AI System to Optimize the Clinical Workflow of Diabetic Retinopathy FFA Interpretation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42872913/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Explainable Transformer-Based Retinal Disease Classification.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42832361/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "OCTA Vessel Segmentation via UNet Transformers and Deformable Receptive Fields: A Motion-Artefact-Resilient Deep Learning Framework.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42875691/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "De-Seg: Advancing OCTA segmentation with multi-scale feature fusion and edge refinement.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42874448/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "EyeGraph: A Multi-granularity Medical Vision-Language Foundation Model with Knowledge Graph Reasoning for Ophthalmic Interpretation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42867984/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Grounded ophthalmic AI beyond the electronic health record trap: a critical narrative review.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42869617/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "OmicsBench: a long-horizon multi-turn benchmark of AI agents on research-study-scale bioinformatics",
+      "url": "https://arxiv.org/abs/2610.21074v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "International consensuses and guidelines on etiology, diagnosis, and treatment of retinal vein occlusion (RVO) by the Academy of Asia-Pacific Professors of Ophthalmology (AAPPO), Asia-Pacific Vitreo-r",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42854985/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "LightHybridNet: A Lightweight Hybrid Deep Learning Framework for Efficient Multi-Label Ophthalmic Disease Classification in Imbalanced Fundus Images",
+      "url": "https://arxiv.org/abs/2610.20671v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Structure Before Intelligence: Gating What Agentic Scientific Workflows Release",
+      "url": "https://arxiv.org/abs/2610.19507v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions",
+      "url": "https://arxiv.org/abs/2610.22298v1",
+      "column": "方法前沿",
       "first_seen": "2026-10-17"
     }
   ]
