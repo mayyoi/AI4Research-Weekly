@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "issue": 3,
+  "issue": 4,
   "last_run": "2026-10-17",
   "items": [
     {
@@ -150,6 +150,102 @@
     {
       "title": "AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions",
       "url": "https://arxiv.org/abs/2610.22298v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Diagnostic Performance of Deep Learning Models for Ocular Toxoplasmosis Using Fundus Photography: A Systematic Review and Meta-Analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42842456/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Merging artificial intelligence and retinal vascular geometric parameters: A novel tool for diagnosis and prognosis prediction of diabetic nephropathy.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42637678/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "High-resolution retinal matrix imaging via computational motion and aberration correction",
+      "url": "https://arxiv.org/abs/2610.19245v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "A frequency-driven method for retinal vessel segmentation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42858545/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Time Series Segmentation in Adaptive Optics Ophthalmoscopy With Application to Flicker-Induced Vasodilation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42841580/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Artificial Intelligence Across the Surgical Research Workflow: A Stage-Specific Framework for Benefits, Failure Modes, and Oversight.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42869423/",
+      "column": "技能配方",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Single-cell transcriptomics and machine learning characterize LTA4H-linked lipid metabolism and inflammatory signatures in the knee osteoarthritis IPFP/synovium compartment.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42862839/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "heise3/ExtremaRank",
+      "url": "https://github.com/heise3/ExtremaRank",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Advancing Cancer Biomarker Discovery Through Multi-Omics, Bioinformatics, and Artificial Intelligence: A Systematic Review.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42885248/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Deep learning-based segmentation of non-perfused volume after magnetic resonance guided high-intensity focused ultrasound therapies: a retrospective evaluation on clinical patient data.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42836351/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Emerging frontiers for AI in single-cell genomics.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42880218/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Deep learning-based virtual perturbation reveals increasing heterogeneity of gene regulatory responses with aging",
+      "url": "https://arxiv.org/abs/2610.19029v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "ProtModernBERT: Compute-Efficient Protein Language Modeling",
+      "url": "https://arxiv.org/abs/2610.19738v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "wrab12/awesome-spatial-transcriptomics",
+      "url": "https://github.com/wrab12/awesome-spatial-transcriptomics",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Predicting Unseen Scientific Interactions: Conditional Flow Models Hallucinate Non-Additive Effects",
+      "url": "https://arxiv.org/abs/2610.20288v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Librarian Agents: Training LLMs to Curate Long-Context Workspaces that Anticipate Future Queries",
+      "url": "https://arxiv.org/abs/2610.22273v1",
       "column": "方法前沿",
       "first_seen": "2026-10-17"
     }
