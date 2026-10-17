@@ -22,11 +22,15 @@ EMAIL_SUBJECT = "AI × 科研效率周报"      # 邮件标题（后面会自动
 LOOKBACK_DAYS = 21
 
 # 抓到的原始条目里，先挑多少条交给 AI 打分。
-# 数字越大越慢、越费 AI 额度，但覆盖更全。90 是性价比比较高的值。
-MAX_CANDIDATES = 90
+# 数字越大越慢、越费 AI 额度。60 条 + 12 条/批 = 5 批，跑得更快更稳。
+MAX_CANDIDATES = 72
+
+# AI 评审阶段的总时间预算（秒）。超过就停止评审、用已有结果或兜底，
+# 保证一次运行不会因为某个平台"连不上但一直等"而卡住。
+AI_TIME_BUDGET_SECONDS = 600
 
 # 每周邮件里最多放多少条。你要求"20 条以内的精华"，所以是 20。
-MAX_ITEMS = 20
+MAX_ITEMS = 12
 
 # AI 打分 0-100 分，低于这个分数就不推送。
 # 调高 = 更挑（可能一周只有三五条）；调低 = 内容更多但可能变水。
@@ -56,8 +60,6 @@ LLM_PREFERENCE = ["github", "deepseek", "openai", "gemini"]
 GITHUB_MODELS = [
     "openai/gpt-4.1-mini",
     "openai/gpt-4o-mini",
-    "openai/gpt-4o",
-    "meta/Llama-4-Scout-17B-16E-Instruct",
 ]
 
 # DeepSeek 的模型名
@@ -73,7 +75,7 @@ GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash"]
 
 # 每次请求让 AI 处理多少条。太大容易超时或被截断，12 比较稳
 # （推理型模型会先"思考"再输出，占用较多额度，所以不要调太大）。
-AI_BATCH_SIZE = 12
+AI_BATCH_SIZE = 8
 
 # AI 请求最多重试几次（网络抖动/限流时有用）。
 AI_MAX_RETRIES = 3
@@ -271,12 +273,12 @@ FOOTER_NOTE = (
     "所有条目均附原文链接，摘要为 AI 提炼，请以原文为准。"
 )
 
-
 # ---------------------------------------------------------
-# 6. 追加：AI 技能（Skills）与社区一手实践
+# 6. 追加：AI 技能（Skills）与社交平台上的最新实践
 # ---------------------------------------------------------
-# 这些源专门抓"别人怎么用 AI"。Reddit / V2EX / 少数派 都是公开订阅源，
-# 不需要登录、不需要 cookie。抓不到会自动跳过，不影响整封邮件。
+# 说明：这些源专门用来抓"别人怎么用 AI"的一手信息。
+# 其中 Reddit / V2EX / 少数派 属于社区或社交平台，用的是公开订阅源。
+# 抓不到时会自动跳过，不会影响整封邮件。
 SOURCES.extend([
     {
         "name": "Reddit · ClaudeAI",
@@ -324,7 +326,61 @@ SOURCES.extend([
     },
 ])
 
+# ---------------------------------------------------------
+# 7. 你的研究领域（决定"相关性"的判断标准）
+# ---------------------------------------------------------
+RESEARCH_FOCUS = (
+    "糖尿病视网膜病变（DR / DME）与视网膜脂质代谢。"
+    "请优先关注三类 AI 进展："
+    "① 视网膜影像 AI：OCT / OCTA / 眼底照相的分割、分级、疗效预测、基础模型；"
+    "② 生信分析 AI：单细胞与空间转录组、脂质组学 / 代谢组学、孟德尔随机化与 GWAS、公共数据库挖掘；"
+    "③ 能直接加速上述工作的通用工具（文献、统计、可视化、自动化）。"
+)
 
-# GitHub Models 目前返回空响应（每次都白试 8 分钟），先禁用；
-# 如果以后官方修好了，把这行改回 ["github", "deepseek", "openai", "gemini"] 即可。
-LLM_PREFERENCE = ["deepseek", "openai", "gemini"]
+# 预筛阶段给"对口内容"加权，避免被大量泛 AI 新闻挤掉
+PRIORITY_KEYWORDS = [
+    "diabetic retinopathy", "retinal", "retina", "macular", "oct", "octa",
+    "fundus", "muller", "müller", "lipid", "lipotoxic", "ceramide",
+    "single-cell", "single cell", "spatial transcript", "bioinformatic",
+    "proteomic", "metabolom", "gwas", "mendelian", "foundation model",
+    "segmentation", "ophthalm", "deep learning", "medical imaging",
+]
+
+# 追加：更对口的信息源
+SOURCES.extend([
+    {
+        "name": "PubMed · 视网膜影像 AI",
+        "kind": "pubmed",
+        "query": (
+            '("deep learning"[Title/Abstract] OR "artificial intelligence"[Title/Abstract] '
+            'OR "foundation model"[Title/Abstract]) AND (retina*[Title/Abstract] '
+            'OR "diabetic retinopathy"[Title/Abstract] OR macular[Title/Abstract] '
+            'OR "optical coherence tomography"[Title/Abstract] OR fundus[Title/Abstract])'
+        ),
+        "limit": 40,
+        "pool": "方法前沿",
+    },
+    {
+        "name": "PubMed · 生信与单细胞 AI",
+        "kind": "pubmed",
+        "query": (
+            '("deep learning"[Title/Abstract] OR "large language model"[Title/Abstract] '
+            'OR "machine learning"[Title/Abstract]) AND ("single-cell"[Title/Abstract] '
+            'OR "spatial transcriptomics"[Title/Abstract] OR bioinformatics[Title/Abstract] '
+            'OR proteomics[Title/Abstract] OR metabolomics[Title/Abstract])'
+        ),
+        "limit": 40,
+        "pool": "方法前沿",
+    },
+    {
+        "name": "PubMed · 脂质代谢 AI",
+        "kind": "pubmed",
+        "query": (
+            '("lipidomics"[Title/Abstract] OR "lipid metabolism"[Title/Abstract] '
+            'OR "Mendelian randomization"[Title/Abstract]) AND ("machine learning"[Title/Abstract] '
+            'OR "deep learning"[Title/Abstract] OR "artificial intelligence"[Title/Abstract])'
+        ),
+        "limit": 30,
+        "pool": "方法前沿",
+    },
+])

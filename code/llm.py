@@ -83,7 +83,7 @@ class LLM:
         return f"{self.provider}:{first}"
 
     def generate_json(self, prompt: str, system: str = "", temperature: float = 0.2,
-                      max_retries: int = 3, timeout: int = 120):
+                      max_retries: int = 3, timeout: int = 45):
         if self.provider == "gemini":
             return self._call_gemini(prompt, system, temperature, max_retries, timeout)
         return self._call_openai_compatible(prompt, system, temperature, max_retries, timeout)
@@ -140,6 +140,10 @@ class LLM:
                     raise
                 except Exception as exc:  # noqa: BLE001
                     last_error = exc
+                    # 网络层错误（超时 / 连不上）：重试也没有意义，直接换下一个模型
+                    if isinstance(exc, (urllib.error.URLError, TimeoutError, OSError)):
+                        print(f"  [AI] {model} 网络不可用（{type(exc).__name__}），换下一个模型")
+                        break
                     wait = min(2 ** attempt, 20)
                     print(f"  [AI] {model} 第 {attempt} 次失败（{type(exc).__name__}），{wait}s 后重试")
                     time.sleep(wait)
@@ -184,6 +188,9 @@ class LLM:
                     raise
                 except Exception as exc:  # noqa: BLE001
                     last_error = exc
+                    if isinstance(exc, (urllib.error.URLError, TimeoutError, OSError)):
+                        print(f"  [AI] {model} 网络不可用（{type(exc).__name__}），换下一个模型")
+                        break
                     wait = min(2 ** attempt, 20)
                     print(f"  [AI] {model} 第 {attempt} 次失败（{type(exc).__name__}），{wait}s 后重试")
                     time.sleep(wait)

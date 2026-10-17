@@ -90,6 +90,14 @@ def _truncate(text: str, limit: int = 700) -> str:
     return text[:limit].rsplit(" ", 1)[0] + " …"
 
 
+def _https(url: str) -> str:
+    """统一升级到 https：邮件客户端和浏览器对 http 链接的拦截越来越多。"""
+    url = (url or "").strip()
+    if url.startswith("http://"):
+        return "https://" + url[len("http://"):]
+    return url
+
+
 def _iso_date(value: str) -> str:
     """尽量把各种日期写法统一成 YYYY-MM-DD。"""
     if not value:
@@ -141,7 +149,7 @@ def fetch_arxiv(source: dict, days: int) -> list[dict]:
         items.append({
             **EMPTY_ITEM,
             "title": title,
-            "url": entry.findtext("atom:id", default="", namespaces=ns).strip(),
+            "url": _https(entry.findtext("atom:id", default="", namespaces=ns).strip()),
             "summary": _truncate(_clean(entry.findtext("atom:summary", default="", namespaces=ns))),
             "source": source["name"],
             "published": _iso_date(entry.findtext("atom:published", default="", namespaces=ns)),
@@ -203,7 +211,7 @@ def _parse_feed(xml_text: str, source: dict) -> list[dict]:
         items.append({
             **EMPTY_ITEM,
             "title": title,
-            "url": link.strip(),
+            "url": _https(link.strip()),
             "summary": _truncate(summary, 500),
             "source": source["name"],
             "published": _iso_date(published),

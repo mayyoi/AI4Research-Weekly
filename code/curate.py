@@ -12,10 +12,12 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import time
 import urllib.parse
 import urllib.request
 from datetime import date
 
+import config as _CONFIG
 import llm as llm_module
 
 # 每个源最多先留多少条，避免某一个源（比如 arXiv）把名额全占满
@@ -80,6 +82,10 @@ def heuristic_score(item: dict) -> float:
     score = _freshness_score(item.get("published", ""))
     score += sum(1.6 for hint in RELEVANT_HINTS if hint in title)
     score += sum(0.5 for hint in RELEVANT_HINTS if hint in summary)
+    # 与用户研究方向（DR / 视网膜影像 / 生信）对口的内容加权
+    priority = getattr(_CONFIG, "PRIORITY_KEYWORDS", [])
+    score += sum(2.5 for kw in priority if kw in title)
+    score += sum(0.8 for kw in priority if kw in summary)
     if len(item.get("summary") or "") > 120:
         score += 1.5  # 有实质内容，不是一句空标题
     if any(re.search(pattern, title) for pattern in NOISE_PATTERNS):
@@ -121,20 +127,30 @@ JUDGE_INSTRUCTIONS = """
 4. 学术与合规 —— 期刊政策、投稿要求、AI 使用规范、伦理、学术出版动态。
 5. 模型更新 —— 大模型或平台发布了新版本、新能力、价格或免费额度变化。
 
-【打分标准】score 取 0-100，只衡量一件事：对一名医学生/临床研究者做科研的效率提升。
-  90-100：立刻能用，且能明显省时间（比如直接解决检索/阅读/写作/统计中的痛点）
-  70-89 ：值得了解，很可能用得上
-  50-69 ：一般性动态，了解一下即可
-  0-49  ：与科研效率基本无关（纯商业融资、玩具项目、行业八卦等）
+【打分标准】score 取 0-100，衡量"对这位研究者做上述研究的具体价值"：
+  90-100：直接可用，能马上解决他手上的分析 / 读片 / 文献问题
+  70-89 ：方法或工具高度相关，值得本周花时间了解
+  55-69 ：有一定关联，可以扫一眼
+  0-54  ：基本无关（泛 AI 新闻、融资、消费级产品、与科研无关的娱乐应用）
 
-【字段要求】
-- what：用大白话说清"这是什么"，不要用行话，40 字以内。
-- why：为什么值得看，具体能帮到科研的哪个环节，60 字以内。
-- how：具体怎么上手，60 字以内；如果没有操作步骤就写"了解即可"。
-- difficulty：只能是 开箱即用 / 需注册 / 需配置 / 需编程 之一。
-- cost：只能是 免费 / 有免费额度 / 付费 之一。
-- tags：1-3 个中文短标签，例如 文献检索、写作润色、统计绘图。
-- keep：score >= 60 时填 true，否则 false。
+【最重要的要求：写成"迷你摘要"，让人不看原文也能抓住要点】
+学术类条目请按"目的 → 方法 → 结果 → 结论"组织；工具类条目按
+"解决什么问题 → 怎么实现 → 实测效果 → 局限"组织。字段如下：
+
+- one_liner：一句话说清这是什么（25 字以内，大白话，不要行话）
+- background：研究目的 / 要解决什么问题（50-80 字）
+- method：用了什么数据、模型、样本量、实验或研究设计（60-100 字）
+- results：主要结果，尽量保留关键数字（60-100 字）
+- conclusion：结论，以及作者自己承认的局限（50-80 字）
+- value_for_you：对他（DR / 视网膜影像 / 生信分析）的具体用处（40-70 字）
+- how_to_use：怎么上手。工具类写安装/调用方式；论文类写"重点读方法部分 / 复现要点"
+- difficulty：只能是 开箱即用 / 需注册 / 需配置 / 需编程 之一
+- cost：只能是 免费 / 有免费额度 / 付费 之一
+- tags：1-3 个中文短标签，例如 视网膜影像、单细胞、文献检索
+- keep：score >= 60 时填 true，否则 false
+
+【严禁编造】原文没有给出的数字、样本量、指标、结论，一律写"原文未给出"。
+宁可写得短，也不要编。摘要信息少的条目，method/results 就如实写"原文未给出"。
 
 严格只输出一个 JSON 数组，不要任何解释文字、不要 Markdown 代码块。
 数组里每一项对应输入中的一条，id 必须和输入一致。
@@ -155,13 +171,17 @@ def _format_candidates(batch: list[dict], offset: int) -> str:
     return "\n".join(lines)
 
 
-def _run_batches(client, cfg, items: list[dict], rotating_topic: str) -> dict[int, dict]:
+def _run_batches(client, cfg, items: list[dict], rotating_topic: str, deadline: float) -> dict[int, dict]:
     """用某一个模型把所有批次跑一遍，返回 {序号: 判断结果}。"""
     verdicts: dict[int, dict] = {}
     batch_size = cfg.AI_BATCH_SIZE
     total_batches = (len(items) + batch_size - 1) // batch_size
 
     for batch_index in range(total_batches):
+        remaining = deadline - time.monotonic()
+        if remaining <= 20:
+            print("  [AI] 时间预算用完，停止评审（余下内容交给兜底）")
+            break
         start = batch_index * batch_size
         batch = items[start:start + batch_size]
         prompt = (
@@ -177,6 +197,7 @@ def _run_batches(client, cfg, items: list[dict], rotating_topic: str) -> dict[in
                 system=cfg.EDITOR_PERSONA,
                 temperature=0.2,
                 max_retries=cfg.AI_MAX_RETRIES,
+                timeout=int(min(40, remaining)),
             )
         except llm_module.AuthError as exc:
             # Key 无效 / 没有权限：后面每一批都会以同样方式失败，直接放弃这个平台
@@ -205,9 +226,16 @@ def judge(clients: list, cfg, items: list[dict], rotating_topic: str) -> dict[in
     clients 是按优先顺序排好的模型列表。第一个跑不通（Key 失效、额度用完、
     模型名不对等）时，会自动用第二个再跑一遍。
     """
+    # 整个评审阶段共用一个时间预算，避免"换平台"把总时长翻倍
+    budget = float(getattr(cfg, "AI_TIME_BUDGET_SECONDS", 480))
+    deadline = time.monotonic() + budget
+
     for index, client in enumerate(clients):
+        if deadline - time.monotonic() <= 20:
+            print("  [AI] 时间预算已用完，不再尝试其它平台")
+            break
         print(f"  [AI] 使用 {client.label} 评审")
-        verdicts = _run_batches(client, cfg, items, rotating_topic)
+        verdicts = _run_batches(client, cfg, items, rotating_topic, deadline)
         if verdicts:
             return verdicts
         if index + 1 < len(clients):
@@ -232,9 +260,13 @@ def select(items: list[dict], verdicts: dict[int, dict], cfg):
         merged["id"] = index
         merged["score"] = score
         merged["column"] = str(verdict.get("column") or item.get("pool") or "工具雷达").strip()
-        merged["what"] = str(verdict.get("what") or "").strip()
-        merged["why"] = str(verdict.get("why") or "").strip()
-        merged["how"] = str(verdict.get("how") or "").strip()
+        merged["one_liner"] = str(verdict.get("one_liner") or verdict.get("what") or "").strip()
+        merged["background"] = str(verdict.get("background") or "").strip()
+        merged["method"] = str(verdict.get("method") or "").strip()
+        merged["results"] = str(verdict.get("results") or "").strip()
+        merged["conclusion"] = str(verdict.get("conclusion") or "").strip()
+        merged["value_for_you"] = str(verdict.get("value_for_you") or verdict.get("why") or "").strip()
+        merged["how_to_use"] = str(verdict.get("how_to_use") or verdict.get("how") or "").strip()
         merged["difficulty"] = str(verdict.get("difficulty") or "").strip()
         merged["cost"] = str(verdict.get("cost") or "").strip()
         tags = verdict.get("tags") or []
@@ -278,8 +310,8 @@ def compose(clients: list, cfg, kept: list[dict], rotating_topic: str) -> dict:
 
     listing = "\n".join(
         f"id={item['id']}｜{item['column']}｜{item['title'][:90]}\n"
-        f"    是什么：{item.get('what', '')}\n"
-        f"    为什么：{item.get('why', '')}"
+        f"    是什么：{item.get('one_liner', '')}\n"
+        f"    对他的用处：{item.get('value_for_you', '')}"
         for item in kept
     )
     prompt = (
@@ -374,9 +406,13 @@ def fallback_selection(items: list[dict], limit: int = 8) -> list[dict]:
         merged["score"] = 0
         merged["column"] = item.get("pool") or "工具雷达"
         merged["title"] = f"{title_zh}（{raw_title[:70]}）" if title_zh else raw_title
-        merged["what"] = summary_zh[:180] if summary_zh else "（本条没有摘要，点开原文查看）"
-        merged["why"] = "本次 AI 摘要服务未启用，下面给的是原文内容的中文翻译，供你快速判断值不值得细看。"
-        merged["how"] = ""
+        merged["one_liner"] = (title_zh or raw_title)[:60]
+        merged["background"] = summary_zh[:200] if summary_zh else "原文未给出"
+        merged["method"] = "原文未给出（本条为翻译速览）"
+        merged["results"] = "原文未给出（本条为翻译速览）"
+        merged["conclusion"] = "原文未给出（本条为翻译速览）"
+        merged["value_for_you"] = "本次 AI 摘要服务未启用，这里只是原文的中文翻译，供你快速判断值不值得细看。"
+        merged["how_to_use"] = "点开原文查看"
         merged["difficulty"] = ""
         merged["cost"] = ""
         merged["tags"] = ["待人工判断"]

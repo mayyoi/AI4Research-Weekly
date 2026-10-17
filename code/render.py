@@ -65,26 +65,44 @@ def _item_card(item: dict, theme: str) -> str:
         *[_chip(tag, "#7c3aed", "#f2ecff") for tag in item.get("tags", [])],
     ])
     rows = (
-        _field_row("是什么", item.get("what", ""), "#64748b")
-        + _field_row("为什么", item.get("why", ""), theme)
-        + _field_row("怎么做", item.get("how", ""), "#64748b")
+        _field_row("目的", item.get("background", ""), "#64748b")
+        + _field_row("方法", item.get("method", ""), "#64748b")
+        + _field_row("结果", item.get("results", ""), "#334155")
+        + _field_row("结论", item.get("conclusion", ""), "#64748b")
+        + _field_row("对你的用处", item.get("value_for_you", "") or item.get("why", ""), theme)
+        + _field_row("怎么用", item.get("how_to_use", "") or item.get("how", ""), "#64748b")
     )
-    return (
+    one_liner = item.get("one_liner") or item.get("what") or ""
+    url = item.get("url") or ""
+    parts = [
         '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
-        'style="margin:0 0 12px 0;">'
+        'style="margin:0 0 12px 0;">',
         '<tr><td class="card" style="background-color:#ffffff;border:1px solid #e8edf5;'
-        f'border-left:4px solid {theme};border-radius:12px;padding:14px 16px 12px 16px;">'
+        f'border-left:4px solid {theme};border-radius:12px;padding:14px 16px 12px 16px;">',
         f'<a class="item-title" href="{_e(item.get("url"))}" '
         f'style="font-family:{FONT};font-size:14.5px;font-weight:700;color:#131a26;'
         f'line-height:1.6;text-decoration:none;display:block;{BREAK}">'
-        f'{_e(_clip(item.get("title", ""), 160))}</a>'
-        f'<div style="margin-top:8px;">{chips}</div>'
+        f'{_e(_clip(item.get("title", ""), 160))}</a>',
+    ]
+    if one_liner:
+        parts.append(
+            f'<div style="font-family:{FONT};font-size:12.5px;color:#64748b;line-height:1.75;'
+            f'margin-top:6px;{BREAK}">{_e(_clip(one_liner, 80))}</div>'
+        )
+    parts += [
+        f'<div style="margin-top:8px;">{chips}</div>',
         '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
-        f'style="margin-top:4px;">{rows}</table>'
+        f'style="margin-top:4px;">{rows}</table>',
         f'<a href="{_e(item.get("url"))}" style="font-family:{FONT};font-size:12px;'
-        f'color:{theme};text-decoration:none;display:inline-block;margin-top:6px;{BREAK}">查看原文 →</a>'
-        '</td></tr></table>'
-    )
+        f'color:{theme};text-decoration:none;display:inline-block;margin-top:8px;">查看原文 →</a>',
+    ]
+    if url:
+        parts.append(
+            f'<div style="font-family:{FONT};font-size:10.5px;color:#94a3b8;line-height:1.6;'
+            f'margin-top:2px;{BREAK}">{_e(_clip(url, 120))}</div>'
+        )
+    parts.append('</td></tr></table>')
+    return "".join(parts)
 
 
 def _section_block(name: str, icon: str, desc: str, theme: str, items: list[dict]) -> str:
@@ -202,11 +220,16 @@ def build_markdown(context: dict, sections: list[tuple[dict, list[dict]]]) -> st
             lines += [
                 f"### [{item.get('title')}]({item.get('url')})",
                 "",
-                f"- 是什么：{item.get('what', '')}",
-                f"- 为什么：{item.get('why', '')}",
-                f"- 怎么做：{item.get('how', '')}",
+                f"- 一句话：{item.get('one_liner', '')}",
+                f"- 目的：{item.get('background', '')}",
+                f"- 方法：{item.get('method', '')}",
+                f"- 结果：{item.get('results', '')}",
+                f"- 结论：{item.get('conclusion', '')}",
+                f"- 对你的用处：{item.get('value_for_you', '')}",
+                f"- 怎么用：{item.get('how_to_use', '')}",
                 f"- 属性：{item.get('difficulty', '')} / {item.get('cost', '')} / "
                 f"{item.get('source', '')} / {item.get('published', '')}",
+                f"- 链接：{item.get('url', '')}",
                 "",
             ]
     glossary = context.get("glossary") or []
