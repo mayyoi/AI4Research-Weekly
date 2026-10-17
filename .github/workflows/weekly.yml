@@ -3,8 +3,7 @@ name: Weekly AI research brief
 # 什么时候自动跑：
 #   schedule —— 每周三 00:00 UTC，也就是北京时间每周三早上 8:00
 #   workflow_dispatch —— 允许你在网页上手动点一下"立即运行"，方便测试
-#   push —— 只在 data/run-now.txt 被改动时触发（等于一个"立刻发一封"的开关，
-#           平时改代码不会误触发发信）
+#   push —— 只在 data/run-now.txt 被改动时触发（等于一个"立刻发一封"的开关）
 on:
   workflow_dispatch:
   schedule:
@@ -13,9 +12,11 @@ on:
     paths:
       - 'data/run-now.txt'
 
-# 需要写权限，才能把去重历史提交回仓库
+# contents: write —— 把去重历史和运行状态提交回仓库
+# models: read    —— 使用 GitHub Models（免费，不需要额外 Key）
 permissions:
   contents: write
+  models: read
 
 # 防止上一次还没跑完，下一次又启动
 concurrency:
@@ -38,22 +39,22 @@ jobs:
 
       # 本项目的代码只用 Python 自带库，所以这里不需要 pip install 任何东西。
 
-      - name: 检查必要的 Secrets 是否配好（不显示内容）
+      - name: 检查必要的 Secrets（不显示内容）
         env:
-          # 邮件授权码：QQMAIL 是推荐的名字；下面两个是常见的其它写法，都能识别
+          # 邮件授权码：QQMAIL 是推荐的名字；下面几个是常见的其它写法，都能识别
           QQMAIL: ${{ secrets.QQMAIL || secrets.Secret || secrets.QQ_AUTH_CODE || secrets.qqmail }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           missing=0
           if [ -z "$QQMAIL" ]; then
             echo "::error::没有找到 QQ 邮箱授权码。请添加一个名为 QQMAIL 的 Secret。"; missing=1
           fi
-          if [ -z "$GEMINI_API_KEY" ] && [ -z "$OPENAI_API_KEY" ]; then
-            echo "::error::没有找到任何 AI Key。OPENAI_API_KEY 或 GEMINI_API_KEY 至少要有其一。"; missing=1
-          fi
-          if [ -n "$OPENAI_API_KEY" ]; then echo "OpenAI Key 已配置。"; fi
-          if [ -n "$GEMINI_API_KEY" ]; then echo "Gemini Key 已配置。"; fi
+          # AI 默认使用 GitHub Models（下面的 GITHUB_TOKEN），所以不强制要求额外 Key
+          if [ -n "$OPENAI_API_KEY" ]; then echo "OpenAI Key 已配置（可选）。"; fi
+          if [ -n "$GEMINI_API_KEY" ]; then echo "Gemini Key 已配置（可选）。"; fi
+          if [ -n "$DEEPSEEK_API_KEY" ]; then echo "DeepSeek Key 已配置（可选）。"; fi
           [ "$missing" -eq 0 ] && echo "必要的 Secret 都已配置。"
           exit $missing
 
@@ -61,10 +62,12 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL }}
           QQMAIL: ${{ secrets.QQMAIL || secrets.Secret || secrets.QQ_AUTH_CODE || secrets.qqmail }}
           QQ_SENDER_EMAIL: 171142515@qq.com
           QQ_RECEIVER_EMAIL: 171142515@qq.com
-          # GitHub 自动提供，用来提高 GitHub 搜索接口的额度（无需你自己配置）
+          # GitHub 自动提供：既用来提高 GitHub 搜索额度，也用来调用 GitHub Models
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -o pipefail
@@ -91,8 +94,7 @@ jobs:
             git push
           fi
 
-      # 这一步是为了"看得见"：不管成功还是失败，都把结果写进 data/last_run.txt。
-      # 这样你在网页上就能直接看到每次运行的结果，不用去翻 Actions 日志。
+      # 不管成功还是失败，都把结果写进 data/last_run.txt，方便在网页上直接看
       - name: 记录本次运行结果
         if: always()
         run: |
