@@ -388,3 +388,46 @@ SOURCES.extend([
 
 # GitHub Models 目前返回空响应（会白耗约 8 分钟），保持禁用；DeepSeek 优先。
 LLM_PREFERENCE = ["deepseek", "openai", "gemini"]
+
+
+# 追加：论文写作 & 生信分析方法（用户点名要加厚）
+SOURCES.extend([
+    {
+        "name": "PubMed · AI 辅助论文写作",
+        "kind": "pubmed",
+        "query": '("large language model"[Title/Abstract] OR ChatGPT[Title/Abstract] OR "generative AI"[Title/Abstract] OR "artificial intelligence"[Title/Abstract]) AND ("academic writing"[Title/Abstract] OR manuscript[Title/Abstract] OR "scientific writing"[Title/Abstract] OR "peer review"[Title/Abstract])',
+        "limit": 30,
+        "pool": "技能配方",
+    },
+    {
+        "name": "PubMed · 生信分析方法",
+        "kind": "pubmed",
+        "query": '("single-cell"[Title/Abstract] OR "spatial transcriptomics"[Title/Abstract] OR bioinformatics[Title/Abstract] OR "multi-omics"[Title/Abstract]) AND (pipeline[Title/Abstract] OR toolkit[Title/Abstract] OR algorithm[Title/Abstract] OR benchmark[Title/Abstract] OR workflow[Title/Abstract])',
+        "limit": 30,
+        "pool": "方法前沿",
+    },
+    {
+        "name": "arXiv · 单细胞与空间方法",
+        "kind": "arxiv",
+        "query": 'cat:q-bio.QM AND (abs:"single-cell" OR abs:"spatial transcriptomics" OR abs:"single cell")',
+        "limit": 25,
+        "pool": "方法前沿",
+    },
+    {
+        "name": "GitHub · 生信分析工具",
+        "kind": "github",
+        "query": "topic:single-cell pushed:>{since} stars:>20",
+        "limit": 15,
+        "pool": "工具雷达",
+    },
+    {
+        "name": "GitHub · 论文写作工具",
+        "kind": "github",
+        "query": "topic:academic-writing pushed:>{since} stars:>10",
+        "limit": 15,
+        "pool": "技能配方",
+    },
+])
+
+MAX_ITEMS = 16
+MAX_CANDIDATES = 90
