@@ -323,3 +323,8 @@ SOURCES.extend([
         "pool": "技能配方",
     },
 ])
+
+
+# GitHub Models 目前返回空响应（每次都白试 8 分钟），先禁用；
+# 如果以后官方修好了，把这行改回 ["github", "deepseek", "openai", "gemini"] 即可。
+LLM_PREFERENCE = ["deepseek", "openai", "gemini"]
