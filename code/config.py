@@ -270,3 +270,56 @@ FOOTER_NOTE = (
     "本邮件由 GitHub Actions 自动生成并发送，每周三 08:00（北京时间）。"
     "所有条目均附原文链接，摘要为 AI 提炼，请以原文为准。"
 )
+
+
+# ---------------------------------------------------------
+# 6. 追加：AI 技能（Skills）与社区一手实践
+# ---------------------------------------------------------
+# 这些源专门抓"别人怎么用 AI"。Reddit / V2EX / 少数派 都是公开订阅源，
+# 不需要登录、不需要 cookie。抓不到会自动跳过，不影响整封邮件。
+SOURCES.extend([
+    {
+        "name": "Reddit · ClaudeAI",
+        "kind": "rss",
+        "url": "https://www.reddit.com/r/ClaudeAI/new/.rss",
+        "pool": "技能配方",
+    },
+    {
+        "name": "Reddit · ChatGPTPro",
+        "kind": "rss",
+        "url": "https://www.reddit.com/r/ChatGPTPro/new/.rss",
+        "pool": "技能配方",
+    },
+    {
+        "name": "Reddit · LocalLLaMA",
+        "kind": "rss",
+        "url": "https://www.reddit.com/r/LocalLLaMA/new/.rss",
+        "pool": "技能配方",
+    },
+    {
+        "name": "V2EX 技术社区（中文）",
+        "kind": "rss",
+        "url": "https://www.v2ex.com/index.xml",
+        "pool": "工具雷达",
+    },
+    {
+        "name": "少数派（中文效率工具）",
+        "kind": "rss",
+        "url": "https://sspai.com/feed",
+        "pool": "工具雷达",
+    },
+    {
+        "name": "GitHub · Claude Skills",
+        "kind": "github",
+        "query": "topic:claude-skills pushed:>{since} stars:>5",
+        "limit": 15,
+        "pool": "技能配方",
+    },
+    {
+        "name": "GitHub · Agent Skills",
+        "kind": "github",
+        "query": "topic:agent-skills pushed:>{since} stars:>5",
+        "limit": 15,
+        "pool": "技能配方",
+    },
+])
