@@ -1,0 +1,118 @@
+name: Weekly AI research brief
+
+# 什么时候自动跑：
+#   schedule —— 每周三 00:00 UTC，也就是北京时间每周三早上 8:00
+#   workflow_dispatch —— 允许你在网页上手动点一下"立即运行"，方便测试
+#   push —— 只在 data/run-now.txt 被改动时触发（等于一个"立刻发一封"的开关，
+#           平时改代码不会误触发发信）
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 3'
+  push:
+    paths:
+      - 'data/run-now.txt'
+
+# 需要写权限，才能把去重历史提交回仓库
+permissions:
+  contents: write
+
+# 防止上一次还没跑完，下一次又启动
+concurrency:
+  group: ai4research-weekly
+  cancel-in-progress: false
+
+jobs:
+  weekly-brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 本项目的代码只用 Python 自带库，所以这里不需要 pip install 任何东西。
+
+      - name: 检查必要的 Secrets 是否配好（不显示内容）
+        env:
+          # 邮件授权码：QQMAIL 是推荐的名字；下面两个是常见的其它写法，都能识别
+          QQMAIL: ${{ secrets.QQMAIL || secrets.Secret || secrets.QQ_AUTH_CODE || secrets.qqmail }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          missing=0
+          if [ -z "$QQMAIL" ]; then
+            echo "::error::没有找到 QQ 邮箱授权码。请添加一个名为 QQMAIL 的 Secret。"; missing=1
+          fi
+          if [ -z "$GEMINI_API_KEY" ] && [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::没有找到任何 AI Key。OPENAI_API_KEY 或 GEMINI_API_KEY 至少要有其一。"; missing=1
+          fi
+          if [ -n "$OPENAI_API_KEY" ]; then echo "OpenAI Key 已配置。"; fi
+          if [ -n "$GEMINI_API_KEY" ]; then echo "Gemini Key 已配置。"; fi
+          [ "$missing" -eq 0 ] && echo "必要的 Secret 都已配置。"
+          exit $missing
+
+      - name: 生成并发送周报
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          QQMAIL: ${{ secrets.QQMAIL || secrets.Secret || secrets.QQ_AUTH_CODE || secrets.qqmail }}
+          QQ_SENDER_EMAIL: 171142515@qq.com
+          QQ_RECEIVER_EMAIL: 171142515@qq.com
+          # GitHub 自动提供，用来提高 GitHub 搜索接口的额度（无需你自己配置）
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -o pipefail
+          python code/run_weekly.py 2>&1 | tee run.log
+
+      - name: 把生成的邮件留档为 Actions 产物（方便回看，不影响你的邮箱）
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-brief-${{ github.run_number }}
+          path: Output/
+          if-no-files-found: warn
+
+      - name: 提交去重历史（同时让定时任务保持活跃）
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/sent_history.json
+          if git diff --cached --quiet; then
+            echo "历史没有变化，跳过提交。"
+          else
+            git commit -m "chore: update weekly history"
+            git push
+          fi
+
+      # 这一步是为了"看得见"：不管成功还是失败，都把结果写进 data/last_run.txt。
+      # 这样你在网页上就能直接看到每次运行的结果，不用去翻 Actions 日志。
+      - name: 记录本次运行结果
+        if: always()
+        run: |
+          mkdir -p data
+          {
+            echo "时间（UTC）：$(date -u '+%Y-%m-%d %H:%M:%S')"
+            echo "触发方式：${{ github.event_name }}"
+            echo "运行编号：${{ github.run_number }}"
+            echo "运行结果：${{ job.status }}"
+            echo ""
+            echo "----- 运行日志末尾 -----"
+            if [ -f run.log ]; then tail -n 60 run.log; else echo "（没有生成 run.log）"; fi
+          } > data/last_run.txt
+          cat data/last_run.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/last_run.txt
+          if git diff --cached --quiet; then
+            echo "状态文件没有变化。"
+          else
+            git commit -m "chore: record run status"
+            git push
+          fi
