@@ -384,3 +384,7 @@ SOURCES.extend([
         "pool": "方法前沿",
     },
 ])
+
+
+# GitHub Models 目前返回空响应（会白耗约 8 分钟），保持禁用；DeepSeek 优先。
+LLM_PREFERENCE = ["deepseek", "openai", "gemini"]
