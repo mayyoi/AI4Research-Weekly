@@ -1,1 +1,67 @@
-{"version": 1, "issue": 0, "items": []}
+{
+  "version": 1,
+  "issue": 1,
+  "items": [
+    {
+      "title": "OmicsBench: a long-horizon multi-turn benchmark of AI agents on research-study-scale bioinformatics",
+      "url": "http://arxiv.org/abs/2610.21074v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "AI Consilium: a Benchmark of LLM Clinical Multidisciplinary Second Opinions",
+      "url": "http://arxiv.org/abs/2610.22298v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Librarian Agents: Training LLMs to Curate Long-Context Workspaces that Anticipate Future Queries",
+      "url": "http://arxiv.org/abs/2610.22273v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Stack Overflow for Agents triples signups with ChatGPT plugin",
+      "url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
+      "column": "模型更新",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "MLExpert: Towards a Generalist Agentic Model for Autonomous Machine Learning Engineering",
+      "url": "http://arxiv.org/abs/2610.22344v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Training Reasoning Models to Generate Diverse Scientific Ideas",
+      "url": "http://arxiv.org/abs/2610.22324v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Learning to Steer LLM Agents and Multi-Agent Systems",
+      "url": "http://arxiv.org/abs/2610.22316v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Structure Before Intelligence: Gating What Agentic Scientific Workflows Release",
+      "url": "http://arxiv.org/abs/2610.19507v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "MindEval2: Clinically Grounded Patients and Rubrics for Evaluating Language Models in Mental Health Support",
+      "url": "http://arxiv.org/abs/2610.22314v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    },
+    {
+      "title": "LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents",
+      "url": "http://arxiv.org/abs/2610.22280v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-17"
+    }
+  ],
+  "last_run": "2026-10-17"
+}
