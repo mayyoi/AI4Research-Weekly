@@ -1,0 +1,66 @@
+时间（UTC）：2026-10-17 08:16:50
+触发方式：workflow_dispatch
+运行编号：1
+运行结果：success
+
+----- 运行日志末尾 -----
+  [源] Google DeepMind 博客         抓到   8 条
+  [源] Nature Methods             抓到   8 条
+  [源] Nature Biotechnology       抓到   8 条
+  [源] MIT 科技评论 · AI              抓到  10 条
+  [源] 量子位（中文）                    抓到  10 条
+  [源] Simon Willison 博客          抓到  30 条
+      原始条目 383 条，失败的源 0 个
+
+[2/6] 去重与预排序
+      进入 AI 评审的候选：90 条
+
+[3/6] 与历史比对，跳过往期已推送内容
+      排除往期 0 条，剩余 90 条
+
+[4/6] AI 评审（第 1 期，本期专题：文献检索与筛选）
+      可用模型：openai:gpt-5
+  [AI] 使用 openai:gpt-5 评审
+  [AI] 正在判断第 1/8 批（12 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+  [AI] 正在判断第 2/8 批（12 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+  [AI] 正在判断第 3/8 批（12 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+  [AI] 正在判断第 4/8 批（12 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+  [AI] 正在判断第 5/8 批（12 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+  [AI] 正在判断第 6/8 批（12 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+  [AI] 正在判断第 7/8 批（12 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+  [AI] 正在判断第 8/8 批（6 条）…
+  [AI] 这一批失败，跳过：LLMError: OpenAI 拒绝了这个 Key（HTTP 401）：{
+  "error": {
+    "message": "Incorrect API key provided: sk-854f1***********************21a
+      AI 判定完成：达标 0 条，本期保留 0 条
+      ⚠️ AI 无结果，启用兜底速览 10 条
+
+[5/6] 渲染邮件
+      已生成 2026-10-17.html（36005 字符）与 2026-10-17.md
+
+[6/6] 发送邮件
+[邮件] 已发送到 171142515@qq.com
+      历史已更新：新增 10 条，期号推进到 1
+
+完成 ✅
