@@ -1,16 +1,9 @@
-时间（UTC）：2026-10-17 08:44:51
+时间（UTC）：2026-10-17 09:04:42
 触发方式：push
-运行编号：2
+运行编号：3
 运行结果：success
 
 ----- 运行日志末尾 -----
-  [AI] openai/gpt-4o 第 2 次失败（JSONDecodeError），4s 后重试
-  [AI] openai/gpt-4o 第 3 次失败（JSONDecodeError），8s 后重试
-  [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 1 次失败（JSONDecodeError），2s 后重试
-  [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 2 次失败（JSONDecodeError），4s 后重试
-  [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 3 次失败（JSONDecodeError），8s 后重试
-  [AI] 这一批失败，跳过：LLMError: Expecting value: line 1 column 1 (char 0)
-  [AI] 正在判断第 7/8 批（12 条）…
   [AI] openai/gpt-4.1-mini 第 1 次失败（JSONDecodeError），2s 后重试
   [AI] openai/gpt-4.1-mini 第 2 次失败（JSONDecodeError），4s 后重试
   [AI] openai/gpt-4.1-mini 第 3 次失败（JSONDecodeError），8s 后重试
@@ -38,29 +31,36 @@
   [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 2 次失败（JSONDecodeError），4s 后重试
   [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 3 次失败（JSONDecodeError），8s 后重试
   [AI] 这一批失败，跳过：LLMError: Expecting value: line 1 column 1 (char 0)
-  [AI] github:openai/gpt-4.1-mini 没有产出结果，改用 openai:gpt-4.1-mini 重试
-  [AI] 使用 openai:gpt-4.1-mini 评审
+  [AI] github:openai/gpt-4.1-mini 没有产出结果，改用 deepseek:deepseek-chat 重试
+  [AI] 使用 deepseek:deepseek-chat 评审
   [AI] 正在判断第 1/8 批（12 条）…
-  [AI] 凭据被拒绝，放弃 openai:gpt-4.1-mini：openai 拒绝了这个凭据（HTTP 401）：{
-  "error": {
-    "message": "Incorrect API key provided: sk-854f1***********************21a6. You can find your A
-      AI 判定完成：达标 0 条，本期保留 0 条
-  [兜底] 已翻译第 1 条
-  [兜底] 已翻译第 2 条
-  [兜底] 已翻译第 3 条
-  [兜底] 已翻译第 4 条
-  [兜底] 已翻译第 5 条
-  [兜底] 已翻译第 6 条
-  [兜底] 已翻译第 7 条
-  [兜底] 已翻译第 8 条
-      ⚠️ AI 无结果，启用兜底速览 8 条
+  [AI] 正在判断第 2/8 批（12 条）…
+  [AI] 正在判断第 3/8 批（12 条）…
+  [AI] 正在判断第 4/8 批（12 条）…
+  [AI] 正在判断第 5/8 批（12 条）…
+  [AI] 正在判断第 6/8 批（12 条）…
+  [AI] 正在判断第 7/8 批（12 条）…
+  [AI] 正在判断第 8/8 批（6 条）…
+      AI 判定完成：达标 13 条，本期保留 13 条
+  [AI] openai/gpt-4.1-mini 第 1 次失败（JSONDecodeError），2s 后重试
+  [AI] openai/gpt-4.1-mini 第 2 次失败（JSONDecodeError），4s 后重试
+  [AI] openai/gpt-4.1-mini 第 3 次失败（JSONDecodeError），8s 后重试
+  [AI] openai/gpt-4o-mini 第 1 次失败（JSONDecodeError），2s 后重试
+  [AI] openai/gpt-4o-mini 第 2 次失败（JSONDecodeError），4s 后重试
+  [AI] openai/gpt-4o-mini 第 3 次失败（JSONDecodeError），8s 后重试
+  [AI] openai/gpt-4o 第 1 次失败（JSONDecodeError），2s 后重试
+  [AI] openai/gpt-4o 第 2 次失败（JSONDecodeError），4s 后重试
+  [AI] openai/gpt-4o 第 3 次失败（JSONDecodeError），8s 后重试
+  [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 1 次失败（JSONDecodeError），2s 后重试
+  [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 2 次失败（JSONDecodeError），4s 后重试
+  [AI] meta/Llama-4-Scout-17B-16E-Instruct 第 3 次失败（JSONDecodeError），8s 后重试
+  [AI] github:openai/gpt-4.1-mini 导读生成失败：LLMError: Expecting value: line 1 column 1 (char 0)
 
 [5/6] 渲染邮件
-      已生成 2026-10-17.html（33313 字符）与 2026-10-17.md
+      已生成 2026-10-17.html（71766 字符）与 2026-10-17.md
 
 [6/6] 发送邮件
 [邮件] 已发送到 171142515@qq.com
-      本次是兜底速览，不写入历史（下次 AI 正常时这些内容还能被重新推送）
-      历史已更新：新增 0 条，期号推进到 1
+      历史已更新：新增 13 条，期号推进到 2
 
 完成 ✅
