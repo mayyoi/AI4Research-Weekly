@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "issue": 4,
-  "last_run": "2026-10-17",
+  "issue": 5,
+  "last_run": "2026-10-21",
   "items": [
     {
       "title": "Documenting Trofinetide Treatment Phenotypes in Rett Syndrome with a Dual-LLM Consensus Pipeline",
@@ -248,6 +248,102 @@
       "url": "https://arxiv.org/abs/2610.22273v1",
       "column": "方法前沿",
       "first_seen": "2026-10-17"
+    },
+    {
+      "title": "Donor-aware integration of public single-cell and spatial transcriptomes identifies a VIC remodeling program and FN1-NT5E spatial association in calcific aortic valve disease.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42887383/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "VGL-stGen: Learning a shared multimodal model for lung histology and spatial transcriptomics",
+      "url": "https://arxiv.org/abs/2610.28266v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Detection and Risk Prediction of Diabetes Related Kidney Disease Using Retinal Images: A Systematic Review and Meta-Analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42895056/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Single-cell eQTL Mendelian randomization reveals the monocyte-associated PRKCB-CTSL axis as a candidate regulatory pathway and potential therapeutic target in rheumatoid arthritis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42897363/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "What Language Adds, and at What Cost: Four Controlled Probes of Pathology Vision-Language Models",
+      "url": "https://arxiv.org/abs/2610.26805v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Agentic Ensemble with Vision-Language Models for Visual Anomaly Detection",
+      "url": "https://arxiv.org/abs/2610.28560v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Localization Gains from Explanation Regularization Should Not Be Interpreted as Faithfulness Gains.",
+      "url": "https://arxiv.org/abs/2610.26292v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "HybridResearcher: Bridging the Structured-Unstructured Boundary for Deep Research Agents",
+      "url": "https://huggingface.co/papers/2610.24899",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "TRACE: Tracking Multimodal Clinical Trajectories for Inpatient Risk Prediction",
+      "url": "https://huggingface.co/papers/2610.25765",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "[分享创造] 开源自用的多 Agent 桌面工作台， Agent 放一起管，订阅额度一点不浪费",
+      "url": "https://www.v2ex.com/t/1250538#reply2",
+      "column": "工具雷达",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Reliability-Preserving Compression for Deployable Medical Image Segmentation",
+      "url": "https://arxiv.org/abs/2610.25460v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "CAPS: Clinically-Verifiable Anatomy-Prioritized Synthesis for Missing MRI Imputation in Brain Tumor Segmentation",
+      "url": "https://arxiv.org/abs/2610.28179v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Evidence Field: Adaptive Covering Programs for Medical Imaging",
+      "url": "https://arxiv.org/abs/2610.24773v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Cross-disorder Learning of Imaging-derived Joint Mophometric Markers in Alzheimer's and Parkinson's Diseases",
+      "url": "https://arxiv.org/abs/2610.27150v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Spatially Informed and Direction Sensitive Representation Learning for Spatial Transcriptomics",
+      "url": "https://arxiv.org/abs/2610.28579v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
+    },
+    {
+      "title": "Comment on: 'Foundation model-based haemoglobin concentration estimation and anaemia risk assessment from retinal fundus images'.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42892639/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-21"
     }
   ]
 }
