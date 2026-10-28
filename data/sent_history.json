@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "issue": 5,
-  "last_run": "2026-10-21",
+  "issue": 6,
+  "last_run": "2026-10-28",
   "items": [
     {
       "title": "Documenting Trofinetide Treatment Phenotypes in Rett Syndrome with a Dual-LLM Consensus Pipeline",
@@ -344,6 +344,102 @@
       "url": "https://pubmed.ncbi.nlm.nih.gov/42892639/",
       "column": "方法前沿",
       "first_seen": "2026-10-21"
+    },
+    {
+      "title": "An Agentic AI Workflow for Automated Macular Hole Diagnosis and Structured Report Generation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42909794/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "CellMarker 3.0: an updated resource of manually curated and computationally predicted cell markers in human/mouse and interactive web tools for single-cell and spatial transcriptomics analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42935241/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Longitudinal retinal imaging and auxiliary tasks for discrete-time survival prediction of referable diabetic retinopathy and maculopathy: a retrospective cohort study",
+      "url": "https://arxiv.org/abs/2610.37544v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "RFM: A Lightweight Retinal Foundation Model for Generalised Oculomics",
+      "url": "https://doi.org/10.64898/2026.10.02.26362554",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Benchmarking segmentation methods for spatial transcriptomics",
+      "url": "https://www.nature.com/articles/s41592-026-03272-x",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "When uncertainty quantification fails: structural vulnerabilities and corrections for selective prediction under clinical class imbalance",
+      "url": "https://arxiv.org/abs/2610.37561v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Enhancing Clinical Classifier Robustness with Deep Representation Learning Based OOD Detection on DNA Methylation Data",
+      "url": "https://arxiv.org/abs/2610.36344v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Benchmarking miRNA Target Prediction Methods",
+      "url": "https://arxiv.org/abs/2610.33960v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Acute Stroke Classification Using Asymmetric Data Standardization and Orthogonal-Focal Loss Optimized CNN-ViT Cross-Attention Fusion: A Multicenter External Validation Study",
+      "url": "https://arxiv.org/abs/2610.34529v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Integrated single-cell and proteomic profiling of pancreatic neoplasia identifies tissue markers that outperform established diagnostic markers in distinguishing cancer from precursor lesions.",
+      "url": "https://doi.org/10.64898/2026.10.02.26364030",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Artificial intelligence in diabetic retinopathy: From deep learning to foundation models, clinical translation, and real-world deployment.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42906863/",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "ProtAgent: Post-Training Compact Protein Tool Agents with Interaction-Level Credit Assignment",
+      "url": "https://arxiv.org/abs/2610.33746v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Semantic-Aware Deformable Feature Alignment for Thyroid Nodule Segmentation in Ultrasound",
+      "url": "https://arxiv.org/abs/2610.34244v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Image Modeling: From Handcrafted Priors to Foundation Image Models",
+      "url": "https://arxiv.org/abs/2610.36646v1",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "SearchHorizonBench: A Benchmark for Search Value in AI Agents",
+      "url": "https://huggingface.co/papers/2610.34714",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
+    },
+    {
+      "title": "talharaziq/Advanced-Bioinformatics",
+      "url": "https://github.com/talharaziq/Advanced-Bioinformatics",
+      "column": "方法前沿",
+      "first_seen": "2026-10-28"
     }
   ]
 }
