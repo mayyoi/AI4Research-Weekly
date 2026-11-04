@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "issue": 6,
-  "last_run": "2026-10-28",
+  "issue": 7,
+  "last_run": "2026-11-04",
   "items": [
     {
       "title": "Documenting Trofinetide Treatment Phenotypes in Rett Syndrome with a Dual-LLM Consensus Pipeline",
@@ -440,6 +440,102 @@
       "url": "https://github.com/talharaziq/Advanced-Bioinformatics",
       "column": "方法前沿",
       "first_seen": "2026-10-28"
+    },
+    {
+      "title": "Opportunistic Cardiovascular Risk Assessment in the Eye Clinic: Validation of a Retinal Deep Learning-Based 10-Year Atherosclerotic Cardiovascular Disease Estimator.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42860999/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "ULTRAWIDE-FIELD COLOR FUNDUS IMAGES AND ARTIFICIAL INTELLIGENCE FOR DIAGNOSIS OF DIABETIC RETINOPATHY: A Systematic Review and Meta-Analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42497322/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Disorganization of inner retinal layers and disruption of outer retinal layers as predictors of anti-vascular endothelial growth factor treatment outcomes in diabetic macular edema: A scoping review.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42176958/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "DR Pixel: Page-Native Deep Research with Vision-Language Models",
+      "url": "https://huggingface.co/papers/2611.03097",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Early Intraretinal Fluid Reduction is Linked to Vision Gains in Patients with Diabetic Macular Edema.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42771326/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "PREDICTIVE OPTICAL COHERENCE TOMOGRAPHY BIOMARKERS OF RETINAL CHANGES AND VISUAL OUTCOMES IN SILICONE OIL ENDOTAMPONADE IDENTIFIED BY ARTIFICIAL INTELLIGENCE.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42593478/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Spatial single-cell mapping of transcriptional differences across genetic backgrounds in mouse brains",
+      "url": "https://www.nature.com/articles/s41592-026-03289-2",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Integration of biomarkers in common retinal neurodegenerative diseases: a comprehensive review.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42961700/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Sparse-View 3D Coronary Reconstruction from Vessel Segmentations Using a Diffusion Prior",
+      "url": "https://arxiv.org/abs/2611.04604v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Deep dynamical models of single-cell multiomic velocities predict loss-of-function and rescue perturbations in B cells",
+      "url": "https://www.nature.com/articles/s41587-026-03348-1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Measure Before You Repair: An Explainable Agent for Blind Restoration of Multi-Artifact 3-D MRI",
+      "url": "https://arxiv.org/abs/2611.03996v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?",
+      "url": "https://huggingface.co/papers/2611.03424",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Toward Artifact-Free Dermoscopy: Characterization of ISIC 2019 Image Defects for Deep Learning Applications",
+      "url": "https://arxiv.org/abs/2611.03502v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Retinal Pigment Epithelium and Microglia Transplantation in Age-related Macular Degeneration.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42501956/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Benchmarking deep learning-based reconstruction methods for photoacoustic computed tomography with clinically relevant synthetic datasets.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42876942/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Anthropic shipped message threads (beta): Claude Code now sends only new messages per turn, about 35% lower time to first token on 500k to 1M token requests",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1xnc4ew/anthropic_shipped_message_threads_beta_claude/",
+      "column": "技能配方",
+      "first_seen": "2026-11-04"
     }
   ]
 }
