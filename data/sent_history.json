@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "issue": 7,
-  "last_run": "2026-11-04",
+  "issue": 8,
+  "last_run": "2026-11-11",
   "items": [
     {
       "title": "Documenting Trofinetide Treatment Phenotypes in Rett Syndrome with a Dual-LLM Consensus Pipeline",
@@ -536,6 +536,102 @@
       "url": "https://www.reddit.com/r/ClaudeAI/comments/1xnc4ew/anthropic_shipped_message_threads_beta_claude/",
       "column": "技能配方",
       "first_seen": "2026-11-04"
+    },
+    {
+      "title": "Deep Learning-Derived Retinal Vascular Morphology and Incident Treatment for Sight-Threatening Diabetic Retinopathy.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42857094/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Synthetic data-driven diabetic retinopathy diagnosis with explainable AI: a clinically interpretable framework.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42171725/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Publications as benchmarks: auditing AI agents on spatial transcriptomics alignment",
+      "url": "https://arxiv.org/abs/2611.11796v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "duyunzhoudyz/dyz-med-paper-skills",
+      "url": "https://github.com/duyunzhoudyz/dyz-med-paper-skills",
+      "column": "技能配方",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "AI-ASSISTED OCT BIOMARKER QUANTIFICATION REVEALS DISTINCT RETINAL FLUID TRAJECTORIES IN CENTRAL RETINAL VEIN OCCLUSION.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42519958/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "SigBridgeR: An R Toolkit for Standardized Identification and Benchmarking of Phenotype-Associated Cell Subpopulations in Single-Cell Transcriptomics.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43008316/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Deep learning retinal vein occlusion diagnosis: a systematic review and meta-analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42778152/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Medical Image Segmentation: Foundation Model Adaptation versus Task-Specific Training",
+      "url": "https://arxiv.org/abs/2611.14519v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Attribution-based diagnostics for single-cell foundation models",
+      "url": "https://arxiv.org/abs/2611.02335v2",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Toward Foundation Detection Models via Example-Based Grounding in EM-DETR",
+      "url": "https://arxiv.org/abs/2611.14518v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Serum Perfluorooctanoic Acid and Elevated Atherosclerosis Index: NHANES Associations and Exploratory Ceramide-Related Analyses.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42986554/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "SkinMind: Equipping Agentic RAG with Human-Inspired Graph Probing for Reliable Dermatology AI",
+      "url": "https://huggingface.co/papers/2611.08935",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Exploratory structure-function associations in retinal vein occlusion-associated macular edema using deep learning quantification of OCT biomarkers and microperimetry.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42918246/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Counterfactual Analysis of Extent Leakage from Annotation-Derived Prompts in Vision-Language Medical Image Segmentation",
+      "url": "https://arxiv.org/abs/2611.13970v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "CellCanon: An Agentic Cellular World Model for Prediction, Explanation, and Observation-Driven Updating",
+      "url": "https://arxiv.org/abs/2611.05890v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Is a CNN-Transformer Ensemble Worth It When a Chest X-Ray Foundation Model Is Available?",
+      "url": "https://arxiv.org/abs/2611.13014v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-11"
     }
   ]
 }
