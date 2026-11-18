@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "issue": 8,
-  "last_run": "2026-11-11",
+  "issue": 9,
+  "last_run": "2026-11-18",
   "items": [
     {
       "title": "Documenting Trofinetide Treatment Phenotypes in Rett Syndrome with a Dual-LLM Consensus Pipeline",
@@ -632,6 +632,102 @@
       "url": "https://arxiv.org/abs/2611.13014v1",
       "column": "方法前沿",
       "first_seen": "2026-11-11"
+    },
+    {
+      "title": "Benchmark Accuracy Does Not Transfer: Domain Adaptive Deep Learning for Diabetic Retinopathy Detection in a Bangladeshi Clinical Setting.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43020978/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Deep learning detection and biological interpretation of arterial stiffness from retinal fundus images in diabetes.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43022745/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Semi-Supervised Retinal Vessel Segmentation via SAM-Based Teacher-Student Distillation with Topology-Aware Loss.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43044227/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "EDGE-Net: Enhanced Distribution Gated Eye-Vessel Network for Ophthalmic Vascular Segmentation with Topological Constraints.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43009663/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Beyond the foundation model: A practical framework for adaptation in ophthalmology.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43031527/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Deep Learning-Based Retinal Vascular Analysis with Quantitative Metrics for Hypertensive Microvascular Damage.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43030856/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "SCAN: Site-Aware Collaborative Privacy-Preserving Adaptation of Vision-Language Models for Neurological Disease Classification",
+      "url": "https://arxiv.org/abs/2611.21955v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Association between deep-learning-derived retinal aging speed and rapid decline of renal function in the Japanese general population.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43017312/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Multimodal Retinal Imaging for Systemic Microvascular Phenotyping: Chronic Kidney Disease as a Translational Reference Model.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43030799/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "MedImgAnnotator: batch wise medical image annotation and preprocessing tool",
+      "url": "https://arxiv.org/abs/2611.22450v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Comparative evaluation of GPT 5.2 Pro and Gemini 3 Pro large multimodal models for retinal optical coherence tomography interpretation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43037730/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "MedJev: A System One Vision-Language Decision Model for Fast and Effective Medical Image Understanding",
+      "url": "https://huggingface.co/papers/2611.20992",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Broadening access to AI for scientists",
+      "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+      "column": "模型更新",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "HoloGene: Learning to Lift Sliced Spatial Transcriptomics to Holistic 3D Gene Fields",
+      "url": "https://arxiv.org/abs/2611.20368v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "ST-FateFlow: Continuous Gene-Spatial Reconstruction with Differentiation-Potential Learning from Time-Resolved Spatial Transcriptomics",
+      "url": "https://arxiv.org/abs/2611.22256v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
+    },
+    {
+      "title": "Flexible Multi-Stack Super-Resolution of Clinical Brain MRI Using Hetero-Orientation Variational Encoding: Expert Reader Evaluation in a Nigerian Cohort",
+      "url": "https://huggingface.co/papers/2611.21412",
+      "column": "方法前沿",
+      "first_seen": "2026-11-18"
     }
   ]
 }
