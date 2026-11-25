@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "issue": 9,
-  "last_run": "2026-11-18",
+  "issue": 10,
+  "last_run": "2026-11-25",
   "items": [
     {
       "title": "Documenting Trofinetide Treatment Phenotypes in Rett Syndrome with a Dual-LLM Consensus Pipeline",
@@ -728,6 +728,102 @@
       "url": "https://huggingface.co/papers/2611.21412",
       "column": "方法前沿",
       "first_seen": "2026-11-18"
+    },
+    {
+      "title": "AI-derived retinal vascular metrics and MoCA-B-defined mild cognitive impairment in type 2 diabetes: a community-based cross-sectional study.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43070219/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "VISION-GAN: Mask Conditioned U-Net GAN with Multi-Scale Auxiliary Supervision for Retinal Fundus Image Generation.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43045884/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Transfer learning for diagnosis of schizophrenia using retinal fundus images.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43050831/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "A Hierarchical KAN-Augmented Graph Convolutional Model for Inferring Cell-Type-Specific Gene Regulations in Single-Cell Omics.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43062791/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Space-map is a tool that integrates tissue slices into detailed 3D cell maps",
+      "url": "https://www.nature.com/articles/s41592-026-03309-1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Predicting OCT-derived retinal and choroidal thickness phenotypes in adults with diabetes using a tabular foundation model integrating ocular biometry and systemic health data.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43069323/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Auditing Biomedical Literature with Blinded AI Peer Review: Where Peer Review Works, Where It Fails, and How to Strengthen It",
+      "url": "https://doi.org/10.64898/2026.11.02.763753",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "wen-chen/GCEN2",
+      "url": "https://github.com/wen-chen/GCEN2",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "w01fb0ss/PiBot",
+      "url": "https://github.com/w01fb0ss/PiBot",
+      "column": "工具雷达",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "The integral role of artificial intelligence models in retinal detachment diagnostics: a systematic review and meta-analysis.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43033233/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Delegent: A Multi-Agent Harness That Reduces Cost without Sacrificing Performance",
+      "url": "https://arxiv.org/abs/2611.33098v1",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Deep learning inference of plant GRNs at single-cell level: from cis-elements to spatially programmable promoters.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43076036/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "LUCID: Statistically Grounded Self-Correction for LLM Reasoning Evaluation",
+      "url": "https://huggingface.co/papers/2611.31595",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "NariQ: BF16-level Qwen3.8-27B in a 10 GB file",
+      "url": "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF",
+      "column": "工具雷达",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Advances in retinal cellular imaging: Towards single-cell resolution and functional biomarkers.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43008845/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
+    },
+    {
+      "title": "Rhegmatogenous Retinal Detachment: A Contemporary Review of Repair Techniques, Common Complications, Advances in Imaging and Access to Care.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/43057624/",
+      "column": "方法前沿",
+      "first_seen": "2026-11-25"
     }
   ]
 }
